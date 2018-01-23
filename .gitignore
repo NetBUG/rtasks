@@ -1,0 +1,4 @@
+gender/data/*
+spam_ham/data/*
+generator/data.json
+generator/node_modules

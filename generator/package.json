@@ -1,0 +1,29 @@
+{
+  "name": "generator",
+  "version": "0.1.0",
+  "description": "Size-unbound JSON manipulations with Node.js",
+  "author": "Oleg Urzhumtcev",
+  "homepage": "https://github.com/NetBUG/rtasks",
+  "license": "MIT",
+  "main": "generate.js",
+  "scripts": {
+    "build": "node build/build.js",
+    "config": "node ./src/config/utils/generateDefaultConfigFile.js",
+    "start": "node ./src/index.js",
+    "test": "snyk test && npm run lint && npm run test:unit && npm run test:ui && npm run test:e2e"
+  },
+  "dependencies": {
+    "clarinet": "^0.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NetBUG/rtasks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NetBUG/rtasks/issues"
+  },
+  "engines": {
+    "node": ">= 6.9.1",
+    "npm": ">= 3.5.2"
+  }
+}
