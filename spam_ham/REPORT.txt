@@ -2,14 +2,15 @@
 The script is run with `python3 app.py`
 
 ## Requirements
-Install via `pip3 -r requirements.txt`. VIrtual environment would be perfectly fine.
+Install via `pip3 -r requirements.txt`. 
+Virtual environment would be perfectly fine.
 
-Most of comments are written in the code, mostly in `app.py` and in `data_loader.py`, as report was not required for that task.
+Most of comments are written in the code, mostly in `bayesian.py` and in 
+`data_loader.py`, as report was not required for that task.
 
-
-## Gaussian Naive Bayes
-Accuracy. Avg: 0.93629, Std: 0.00000
-AUC. Avg: 0.94268, Std: 0.00000
-Top 5 features:
-[('me', 0.16778523489932887), ('ok', 0.15436241610738255), ('to', 0.15436241610738255), ('lor', 0.1476510067114094), ('go', 0.13758389261744966)]
-[('to', 1.2121212121212122), ('call', 0.41414141414141414), ('you', 0.3939393939393939), ('or', 0.31313131313131315), ('txt', 0.30303030303030304)]
+Bayesian models were tested as a baseline to the solution where each independent 
+feature might bear important discriminative information. Decision trees were also 
+investigated, and gave good prediction accuracy but could not beat 99.9% AUC for
+multinomial Bayesian model. It is of no reason to improve current result with 
+any kind of boosting. In real world, additional features (like sender information)
+and sequential (context-aware) processing would be needed to attain higher accuracy.

@@ -11,8 +11,8 @@ class DataLoader():
     def __init__(self, filename):
         self.corpus_path = filename    # In future, we can normalize paths
         self.full_set = None
-        self.read_file()
         # or scan for directories
+        self.read_file()
         x1, x2, y1, y2 = train_test_split(self.full_set, np.array(self.labels), test_size=0.3, random_state=RandomState())
         self.test_set = x1, y1
         self.train_set = x2, y2
@@ -43,11 +43,10 @@ class DataLoader():
         vm = CountVectorizer()
         vm.fit(self.raw_data)
         data = vm.transform(self.raw_data).toarray()
-        self.full_set = data
+        self.full_set = data / np.max(data)
         self.dictionary = vm.get_feature_names()
         self.data = pd.DataFrame(vm.transform(self.raw_data).toarray(),
                          columns=self.dictionary)
-        #print (self.data)
         return self.data
 
 if __name__ == '__main__':
