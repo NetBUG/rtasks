@@ -1,4 +1,8 @@
 gender/data/*
+gender/__pycache__
+gender/*.pyc
 spam_ham/data/*
+spam_ham/__pycache__
+spam_ham/*.pyc
 generator/data.json
 generator/node_modules

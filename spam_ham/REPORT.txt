@@ -1,0 +1,9 @@
+# General
+The script is run with `python3 app.py`
+
+## Requirements
+Install via `pip3 -r requirements.txt`. VIrtual environment would be perfectly fine.
+
+Most of comments are written in the code, mostly in `bayesian.py` and in `data_loader.py`, as report was not required for that task.
+
+
