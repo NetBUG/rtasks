@@ -10,7 +10,7 @@ from sklearn.tree import DecisionTreeClassifier
 import sys
 
 class METHOD:
-    gaussian, multinomial, bernoulli, tree = range(3)
+    gaussian, multinomial, bernoulli, tree = range(4)
 
 method = METHOD.multinomial
 
