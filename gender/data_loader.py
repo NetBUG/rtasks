@@ -53,6 +53,7 @@ class DataLoader():
         self.codes = pd.read_csv(features1_file, encoding='cp1251')
         self.types = pd.read_csv(features2_file, delimiter=';')
         user_genders = self.users.as_matrix()
+        self.data_labels = list(self.codes.as_matrix()[:, 1]) + list(self.types.as_matrix()[:, 1])
         #users = users.set_index('customer_id')
 
         mat = df.as_matrix()

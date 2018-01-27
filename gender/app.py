@@ -6,30 +6,26 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, auc
 import numpy as np
 import operator
+import sys
 
 from common import *
 
-dl = DataLoader()
 
-from sklearn.grid_search import GridSearchCV
-from sklearn.metrics import roc_curve, auc
-from sklearn.naive_bayes import GaussianNB, MultinomialNB, BernoulliNB
-from sklearn.tree import DecisionTreeClassifier
-import sys
-from numpy.random import RandomState
-import matplotlib.pyplot as plt
 
 class METHOD:
-    gaussian, multinomial, bernoulli, tree = range(4)
+    gaussian, multinomial, bernoulli, tree, svc = range(5)
 
 method = METHOD.bernoulli
 
+
 iterations = 60
-k = 8
+k = 10
 
 scores = []
 roc_auc = []
 weights = []
+
+dl = DataLoader()
 
 def display_auc(y_true, y_score):
     fpr, tpr, _ = roc_curve(y_true, y_score)
@@ -46,7 +42,7 @@ def display_auc(y_true, y_score):
     plt.show()
 
 def top_k_features(k, weights):
-    return sorted(zip(dl.dictionary, weights), reverse=True, key=operator.itemgetter(1))[:k]
+    return sorted(zip(dl.data_labels, weights), reverse=True, key=operator.itemgetter(1))[:k]
 
 
 X_Train, Y_Train = dl.train_set
@@ -61,6 +57,8 @@ for i in range(iterations):
         clf = MultinomialNB()		# best option for our features
     elif method == METHOD.tree:
         clf = DecisionTreeClassifier(criterion="entropy")
+    elif method == METHOD.svc:
+        clf = SVC(probability=True)
 
     elif method == METHOD.bernoulli:
         clf = BernoulliNB(binarize=0.31)    # binarize found via cross validation
@@ -79,3 +77,5 @@ if method == METHOD.gaussian:
     weights = clf.theta_
 else:
     weights = np.exp(clf.feature_log_prob_)
+print(top_k_features(k, weights[0, :]))
+print(top_k_features(k, weights[1, :]))
